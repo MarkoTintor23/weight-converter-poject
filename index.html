@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Converter</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weight Converter</h1>
+      <div class="converter">
+        <input
+          type="number"
+          id="weight"
+          placeholder="Enter weight"
+          class="input-field"
+        />
+
+        <div class="select-group">
+          <label for="fromUnit">From:</label>
+          <select id="fromUnit" class="select">
+            <option value="kg">Kilograms</option>
+            <option value="lbs">Pounds</option>
+          </select>
+
+          <label for="toUnit">To:</label>
+          <select id="toUnit" class="select">
+            <option value="kg">Kilograms</option>
+            <option value="lbs">Pounds</option>
+          </select>
+        </div>
+
+        <button class="convert-btn">Convert</button>
+
+        <div id="result" class="result">Converted weight:</div>
+      </div>
+    </div>
+  </body>
+</html>
