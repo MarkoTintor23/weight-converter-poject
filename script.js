@@ -1,18 +1,39 @@
-const convertButton = document.querySelector(".convert-btn");
-const weightInput = document.querySelector("#weight");
-const fromUnit = document.querySelector("#fromUnit");
-const toUnit = document.querySelector("#toUnit");
-const resultDiv = document.querySelector("#result");
+class WeightConverter {
+  constructor() {
+    this.convertButton = document.querySelector(".convert-btn");
+    this.weightInput = document.querySelector("#weight");
+    this.fromUnit = document.querySelector("#fromUnit");
+    this.toUnit = document.querySelector("#toUnit");
+    this.resultDiv = document.querySelector("#result");
 
-convertButton.addEventListener("click", function () {
-  let weight = parseFloat(weightInput.value);
-  if (fromUnit.value === "kg" && toUnit.value === "lbs") {
-    weight *= 2.2;
-  } else if (fromUnit.value === "lbs" && toUnit.value === "kg") {
-    weight /= 2.2;
-  } else {
-    alert("You cannot convert same units");
-    return;
+    this.addEventListeners();
   }
-  resultDiv.textContent = `Converted Weight: ${weight.toFixed(2)}`;
-});
+
+  addEventListeners() {
+    this.convertButton.addEventListener("click", () => this.convert());
+  }
+
+  convert() {
+    let weight = parseFloat(this.weightInput.value);
+    if (isNaN(weight)) {
+      alert("Please enter a valid number");
+      return;
+    }
+
+    if (this.fromUnit.value === this.toUnit.value) {
+      alert("You cannot convert same units");
+      return;
+    }
+
+    if (this.fromUnit.value === "kg" && this.toUnit.value === "lbs") {
+      weight *= 2.2;
+    } else if (this.fromUnit.value === "lbs" && this.toUnit.value === "kg") {
+      weight /= 2.2;
+    }
+
+    this.resultDiv.textContent = `Converted Weight: ${weight.toFixed(2)}`;
+  }
+}
+
+// Instantiate the converter when the DOM is loaded
+document.addEventListener("DOMContentLoaded", () => new WeightConverter());
